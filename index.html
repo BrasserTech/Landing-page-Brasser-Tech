@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/logo.svg">
+
+  <!-- Lottie (toggle de tema + componentes da página) -->
+  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"></script>
 </head>
 <body>
   <!-- Header fixo -->
@@ -28,10 +31,22 @@
           <li><a href="#principal">Principal</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#produtos">Produtos</a></li>
           <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#contratos">Contratos</a></li>
           <li><a href="#contato" class="btn btn-primary">Contato</a></li>
+
+          <!-- Toggle de tema -->
+          <li class="theme-control">
+            <button id="themeBtn" class="theme-btn" aria-label="Alternar tema claro/escuro">
+              <dotlottie-wc
+                id="themeLottie"
+                src="https://lottie.host/fb40eea9-d631-4176-bc5b-92f510bf53ac/MsnyiAwQhE.lottie"
+                stateMachineId="StateMachine1"
+                style="width:72px;height:40px"
+                autoplay
+                loop="false"
+              ></dotlottie-wc>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -57,7 +72,6 @@
       <div class="hero-art parallax" aria-hidden="true">
         <div class="glow glow-a"></div>
         <div class="glow glow-b"></div>
-        <!-- 8 blocos com a mesma imagem (imgprodex) -->
         <div class="mesh">
           <span></span><span></span><span></span><span></span>
           <span></span><span></span><span></span><span></span>
@@ -66,22 +80,6 @@
     </div>
     <div class="stripe"></div>
   </main>
-
-  <!-- LOGOS full-bleed: loop contínuo sem tranco -->
-  <section class="logos-bar full-bleed" aria-label="Tecnologias e parceiros">
-    <div class="scroller" data-animated>
-      <div class="scroller__inner">
-        <img src="assets/img/logos/logo-01.svg" alt="Logo 1">
-        <img src="assets/img/logos/logo-02.svg" alt="Logo 2">
-        <img src="assets/img/logos/logo-03.svg" alt="Logo 3">
-        <img src="assets/img/logos/logo-04.svg" alt="Logo 4">
-        <img src="assets/img/logos/logo-05.svg" alt="Logo 5">
-        <img src="assets/img/logos/logo-06.svg" alt="Logo 6">
-        <img src="assets/img/logos/logo-07.svg" alt="Logo 7">
-        <img src="assets/img/logos/logo-08.svg" alt="Logo 8">
-      </div>
-    </div>
-  </section>
 
   <!-- SOBRE -->
   <section id="sobre" class="section">
@@ -155,38 +153,37 @@
     </div>
   </section>
 
-  <!-- PRODUTOS (nova) — usa a “imagem 2” -->
-  <section id="produtos" class="section products full-bleed-bg">
+  <!-- PROJETOS (ex-Produtos) -->
+  <section id="projetos" class="section products full-bleed-bg">
     <div class="products-bg parallax" style="--bg:url('assets/img/produtos/imagem-2.jpg')"></div>
 
     <div class="container">
       <div class="products-header" data-reveal>
-        <h2>Produtos Brasser</h2>
-        <p class="maxw">Conjunto de módulos prontos para acelerar implementações com agentes de IA, conectores e observabilidade.</p>
+        <h2>Projetos Brasser</h2>
+        <p class="maxw">Conjunto de soluções aplicadas com agentes, automações e sistemas sob medida.</p>
 
         <div class="tabs" role="tablist">
           <button class="tab is-active" data-filter="all" aria-selected="true">Todos</button>
           <button class="tab" data-filter="agentes">Agentes</button>
-          <button class="tab" data-filter="automacao">Automação</button>
-          <button class="tab" data-filter="dados">Dados</button>
+          <button class="tab" data-filter="automacoes">Automações</button>
+          <button class="tab" data-filter="sistemas">Sistemas</button>
         </div>
       </div>
 
       <div class="grid-3 products-grid">
-        <!-- Todos usam a imagem 2 como base visual. Troque depois por imagens específicas. -->
         <article class="p-card tilt" data-cat="agentes" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
           <h3>Agent Hub</h3>
           <p>Orquestração de agentes com ferramentas, memória e RBAC.</p>
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
         </article>
 
-        <article class="p-card tilt" data-cat="automacao" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+        <article class="p-card tilt" data-cat="automacoes" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
           <h3>Flow Engine</h3>
           <p>Workflows assíncronos, filas e webhooks com SLAs.</p>
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
         </article>
 
-        <article class="p-card tilt" data-cat="dados" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+        <article class="p-card tilt" data-cat="sistemas" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
           <h3>Telemetry Kit</h3>
           <p>Tracing, feedbacks e painéis para LLMs e agentes.</p>
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
@@ -198,13 +195,13 @@
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
         </article>
 
-        <article class="p-card tilt" data-cat="automacao" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+        <article class="p-card tilt" data-cat="automacoes" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
           <h3>Integrations</h3>
           <p>Conectores para ERP/CRM, e-mail, WhatsApp, bancos de dados.</p>
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
         </article>
 
-        <article class="p-card tilt" data-cat="dados" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+        <article class="p-card tilt" data-cat="sistemas" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
           <h3>Eval Studio</h3>
           <p>Avaliações offline/online, datasets e A/B de prompts.</p>
           <a class="btn btn-ghost ripple" href="#">Detalhes</a>
@@ -213,122 +210,144 @@
     </div>
   </section>
 
-  <!-- PROJETOS -->
-  <section id="projetos" class="section">
-    <div class="container">
-      <h2 class="center">Projetos e Cases</h2>
-      <p class="center maxw">Algumas das soluções desenvolvidas pela Brasser Tech em IA e automação.</p>
-
-      <div class="grid-3" style="margin-top:40px">
-        <article class="card project tilt" data-reveal>
-          <h3>Agente de Suporte Omnichannel</h3>
-          <p>Agente de IA integrado ao WhatsApp e e-mail, redução de 60% no TMA e handoff humano.</p>
-          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
-        </article>
-        <article class="card project tilt" data-reveal>
-          <h3>Automação Financeira</h3>
-          <p>Pipeline de conciliação automática com relatórios em tempo real e redução de erros manuais.</p>
-          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
-        </article>
-        <article class="card project tilt" data-reveal>
-          <h3>RAG Jurídico</h3>
-          <p>Busca em documentos internos com citações e auditoria, acelerando pareceres.</p>
-          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
-        </article>
+  <!-- TECNOLOGIAS (agora ANTES do Contato) -->
+  <section id="tecnologias" class="section alt tech">
+    <div class="container tech-grid">
+      <div class="tech-lottie" data-reveal>
+        <dotlottie-wc
+          src="https://lottie.host/66a12b80-282b-45d3-b59d-e3621020facf/sRM75NI3bc.lottie"
+          style="width:320px;height:320px"
+          autoplay
+          loop
+        ></dotlottie-wc>
       </div>
-    </div>
-  </section>
-
-  <!-- CONTRATOS -->
-  <section id="contratos" class="section alt">
-    <div class="container">
-      <h2 class="center">Modelos de contratação</h2>
-      <div class="grid-3">
-        <article class="plan tilt" data-reveal>
-          <h3>Start</h3>
-          <p class="price">R$ —</p>
-          <ul>
-            <li>Diagnóstico e roadmap</li>
-            <li>MVP em 4 semanas</li>
-            <li>Treinamento</li>
-          </ul>
-          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Começar</button>
-        </article>
-        <article class="plan tilt" data-reveal>
-          <h3>Scale</h3>
-          <p class="price">R$ —</p>
-          <ul>
-            <li>Agentes em produção</li>
-            <li>Observabilidade</li>
-            <li>Suporte estendido</li>
-          </ul>
-          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Solicitar proposta</button>
-        </article>
-        <article class="plan tilt" data-reveal>
-          <h3>Enterprise</h3>
-          <p class="price">Sob medida</p>
-          <ul>
-            <li>Segurança avançada</li>
-            <li>Integrações críticas</li>
-            <li>SLOs e governança</li>
-          </ul>
-          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Falar com vendas</button>
-        </article>
+      <div class="tech-list" data-reveal>
+        <h2>Tecnologias utilizadas</h2>
+        <p class="maxw">Trabalhamos com um ecossistema moderno de dados, APIs e IA para entregar soluções escaláveis.</p>
+        <ul class="badge-list">
+          <li class="badge">Python</li>
+          <li class="badge">TypeScript</li>
+          <li class="badge">Node.js</li>
+          <li class="badge">FastAPI</li>
+          <li class="badge">React/Next.js</li>
+          <li class="badge">PostgreSQL</li>
+          <li class="badge">Redis</li>
+          <li class="badge">Docker</li>
+          <li class="badge">Kubernetes</li>
+          <li class="badge">n8n</li>
+          <li class="badge">Workers</li>
+          <li class="badge">LLMs/RAG</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" class="section">
-    <div class="container two-cols">
-      <div class="col" data-reveal>
-        <h2>Vamos conversar</h2>
-        <p>Descreva seus objetivos e receberá um diagnóstico rápido de viabilidade.</p>
-        <ul class="contact-list">
-          <li>contato@brassertech.com.br</li>
-          <li>+55 (00) 0000-0000</li>
-          <li>@brassertech</li>
-        </ul>
+  <section id="contato" class="section contact section alt">
+    <div class="container">
+      <h2 class="center">Fale com a Brasser Tech</h2>
+      <p class="center maxw">Estamos prontos para apoiar seu projeto de automação e agentes de IA.</p>
+
+      <div class="contact-grid">
+        <!-- Formulário -->
+        <article class="contact-card card">
+          <h3 class="contact-title">Entre em contato</h3>
+          <form class="form contact-form" onsubmit="return false;">
+            <label>Nome
+              <input type="text" placeholder="Seu nome completo" required>
+            </label>
+            <label>E-mail
+              <input type="email" placeholder="seu@email.com" required>
+            </label>
+            <label>Assunto
+              <input type="text" placeholder="Ex.: Projeto de agentes / RAG">
+            </label>
+            <label>Mensagem
+              <textarea rows="5" placeholder="Conte-nos sobre o objetivo, contexto e prazos." required></textarea>
+            </label>
+            <button class="btn btn-primary ripple" data-open-modal="#modalLead">Enviar mensagem</button>
+          </form>
+        </article>
+
+        <!-- Canais + Lottie no lugar do mapa -->
+        <div class="contact-aside">
+          <article class="info-card card">
+            <p class="contact-intro">Se preferir, utilize os canais abaixo. Responderemos em até 1 dia útil.</p>
+            <ul class="info-list">
+              <li>
+                <span class="ico">📞</span>
+                <div>
+                  <div class="info-label">Telefone / WhatsApp</div>
+                  <a href="tel:+550000000000">+55 (00) 0000-0000</a>
+                </div>
+              </li>
+              <li>
+                <span class="ico">✉️</span>
+                <div>
+                  <div class="info-label">E-mail</div>
+                  <a href="mailto:contato@brassertech.com.br">contato@brassertech.com.br</a>
+                </div>
+              </li>
+              <li>
+                <span class="ico">📍</span>
+                <div>
+                  <div class="info-label">Escritório</div>
+                  <span>São Paulo — SP</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Lottie contato -->
+          <article class="card lottie-card">
+            <dotlottie-wc
+              src="https://lottie.host/25404cc1-dc1b-49ff-ad7b-8cb98b0306ce/8vn4xA3T4W.lottie"
+              style="width:100%;max-width:360px;height:260px;margin:auto;display:block"
+              autoplay
+              loop
+            ></dotlottie-wc>
+          </article>
+        </div>
       </div>
-      <form class="col form" data-reveal onsubmit="return false;">
-        <label>Nome <input type="text" required></label>
-        <label>E-mail <input type="email" required></label>
-        <label>Mensagem <textarea rows="4" required></textarea></label>
-        <button class="btn btn-primary ripple" data-open-modal="#modalLead">Enviar</button>
-        <small>Ao enviar, você concorda com nossos <a href="pages/termos.html">Termos</a> e <a href="pages/privacidade.html">Privacidade</a>.</small>
-      </form>
     </div>
   </section>
 
   <!-- RODAPÉ -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <a class="brand brand-foot" href="#">
+  <footer class="footer footer-modern">
+    <div class="container footer-cols">
+      <div class="footer-brand">
+        <a class="brand" href="#">
           <img src="assets/img/logo.svg" class="brand-logo" alt="Brasser Tech" />
           <span class="brand-name">Brasser Tech</span>
         </a>
-        <p>Tecnologia, automação e agentes de IA.</p>
+        <p class="foot-desc">Tecnologia, automação e agentes de IA com foco em valor de negócio.</p>
+        <ul class="social">
+          <li><a href="#" aria-label="LinkedIn">in</a></li>
+          <li><a href="#" aria-label="GitHub">GH</a></li>
+          <li><a href="#" aria-label="X / Twitter">X</a></li>
+        </ul>
       </div>
-      <nav>
-        <h4>Empresa</h4>
+
+      <nav class="footer-nav">
+        <h4>Navegação</h4>
         <ul>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#produtos">Produtos</a></li>
           <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#contratos">Contratos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
-      <nav>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="pages/termos.html">Termos</a></li>
-          <li><a href="pages/privacidade.html">Privacidade</a></li>
+
+      <div class="footer-contact">
+        <h4>Fale conosco</h4>
+        <ul class="info-list compact">
+          <li><span class="ico">📞</span><a href="tel:+550000000000">+55 (00) 0000-0000</a></li>
+          <li><span class="ico">✉️</span><a href="mailto:contato@brassertech.com.br">contato@brassertech.com.br</a></li>
+          <li><span class="ico">📍</span><span>São Paulo — SP</span></li>
         </ul>
-      </nav>
+      </div>
     </div>
+
     <div class="foot-copy">
       © <span id="year"></span> Brasser Tech. Todos os direitos reservados.
     </div>

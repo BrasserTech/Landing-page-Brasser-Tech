@@ -1,4 +1,116 @@
-/* ====== NAV MOBILE ====== */
+/* ========= util: aguardar o 'ready' do dotlottie ========= */
+function onLottieReady(el, cb) {
+  if (!el) return;
+  // 'ready' é o evento oficial do webcomponent
+  const isReady = el.readyState === 2 || el.readyState === 'complete' || el.isReady === true;
+  if (isReady) { try { cb(); } catch {} return; }
+  const handler = () => { try { cb(); } catch {} el.removeEventListener('ready', handler); };
+  el.addEventListener('ready', handler, { once: true });
+}
+
+/* ========= iniciar/pausar por visibilidade e honrar autoplay ========= */
+function wireAutoplayLotties() {
+  const lotties = document.querySelectorAll('dotlottie-wc');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting, target }) => {
+      onLottieReady(target, () => {
+        try {
+          if (isIntersecting) target.play?.();
+          else target.pause?.();
+        } catch {}
+      });
+    });
+  }, { threshold: 0.1 });
+
+  lotties.forEach(el => {
+    // se tem atributo autoplay, garante o play após ready
+    if (el.hasAttribute('autoplay')) {
+      onLottieReady(el, () => { try { el.play?.(); } catch {} });
+    }
+    io.observe(el);
+  });
+}
+
+/* ========= THEME: inicia, alterna, persiste (com animação confiável) ========= */
+(function initTheme(){
+  const root = document.documentElement;
+  const STORAGE_KEY = 'bt-theme';
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = saved || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initial);
+
+  const themeBtn = document.getElementById('themeBtn');
+  const lottie = document.getElementById('themeLottie');
+
+  let isSwitching = false;
+  const ANIM_TIME = 500;   // tempo para a animação aparecer antes de aplicar o tema
+  const COOLDOWN  = 900;   // evita múltiplos cliques corridos
+
+  function driveTimeline(direction = 1) {
+    onLottieReady(lottie, () => {
+      try { lottie.setDirection?.(direction); } catch {}
+      try { lottie.seek?.(direction === 1 ? 0 : 1); } catch {}
+      try { lottie.play?.(); } catch {}
+    });
+  }
+
+  // fallback para state machine: tenta inputs comuns
+  function driveStateMachine() {
+    onLottieReady(lottie, () => {
+      const sm = lottie.stateMachineId || 'StateMachine1';
+      const candidates = ['toggle','Toggle','switch','Switch','checked','isOn','pressed'];
+      for (const name of candidates) {
+        try {
+          // alguns players esperam boolean, outros pulsos (true → false)
+          lottie.setInputValue?.(sm, name, true);
+          setTimeout(() => { try { lottie.setInputValue?.(sm, name, false); } catch {} }, 50);
+          return; // se um deu certo, não precisamos tentar os demais
+        } catch {}
+      }
+      // se nada acima existir, pelo menos tenta tocar a timeline
+      try { lottie.play?.(); } catch {}
+    });
+  }
+
+  function animateToggle(currentTheme, nextTheme) {
+    // 1) tenta timeline (direção), 2) tenta state machine
+    if (currentTheme === 'dark' && nextTheme === 'light') driveTimeline(1);
+    else if (currentTheme === 'light' && nextTheme === 'dark') driveTimeline(-1);
+    // fallback SM (se o arquivo for controlado por state machine)
+    driveStateMachine();
+  }
+
+  function toggleTheme(){
+    if (isSwitching) return;
+    isSwitching = true;
+
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    // inicia a animação do Lottie
+    animateToggle(current, next);
+
+    // aplica mudança de tema após tempo de animação
+    setTimeout(()=>{
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(STORAGE_KEY, next);
+      setTimeout(()=>{ isSwitching = false; }, COOLDOWN);
+    }, ANIM_TIME);
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+    themeBtn.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
+    });
+  }
+
+  // garante que lotties com autoplay funcionem
+  wireAutoplayLotties();
+})();
+
+/* ========= NAV MOBILE ========= */
 const btnMenu = document.querySelector('#btnMenu');
 const menu = document.querySelector('#menu');
 if (btnMenu && menu) {
@@ -11,10 +123,10 @@ if (btnMenu && menu) {
   );
 }
 
-/* ====== ANO RODAPÉ ====== */
+/* ========= ANO RODAPÉ ========= */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ====== VOLTAR AO TOPO ====== */
+/* ========= VOLTAR AO TOPO ========= */
 const toTop = document.querySelector('[data-to-top]');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 600) toTop.classList.add('show');
@@ -24,7 +136,7 @@ toTop?.addEventListener('click', () =>
   window.scrollTo({ top:0, behavior:'smooth' })
 );
 
-/* ====== SMOOTH ANCHORS ====== */
+/* ========= SMOOTH ANCHORS ========= */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
@@ -33,7 +145,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* ====== REVEAL + STAGGER ====== */
+/* ========= REVEAL + STAGGER ========= */
 const revealEls = [...document.querySelectorAll('[data-reveal]')];
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -46,7 +158,7 @@ const io = new IntersectionObserver(entries => {
 },{ threshold: 0.12 });
 revealEls.forEach((el,i) => { el.dataset.delay = i % 3 * 80; io.observe(el); });
 
-/* ====== TYPE-IN (Hero) ====== */
+/* ========= TYPE-IN (Hero) ========= */
 const typeEl = document.querySelector('.type-in');
 if (typeEl) {
   const text = typeEl.textContent.trim();
@@ -60,17 +172,15 @@ if (typeEl) {
   setTimeout(typer, 200);
 }
 
-/* ====== PARALLAX (glows e bg de produtos) ====== */
+/* ========= PARALLAX ========= */
 const parallaxEls = document.querySelectorAll('.parallax, .glow');
 window.addEventListener('mousemove', (e) => {
   const x = (e.clientX / window.innerWidth - 0.5) * 10;
   const y = (e.clientY / window.innerHeight - 0.5) * 10;
-  parallaxEls.forEach(el => {
-    el.style.transform = `translate(${x}px, ${y}px)`;
-  });
+  parallaxEls.forEach(el => { el.style.transform = `translate(${x}px, ${y}px)`; });
 });
 
-/* ====== TILT CARDS ====== */
+/* ========= TILT CARDS ========= */
 const tiltEls = document.querySelectorAll('.tilt');
 tiltEls.forEach(card => {
   const damp = 20;
@@ -81,12 +191,10 @@ tiltEls.forEach(card => {
     const ry = ((cx / r.width) - 0.5) *  damp;
     card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
   });
-  card.addEventListener('pointerleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('pointerleave', () => { card.style.transform = ''; });
 });
 
-/* ====== COUNTERS (Sobre) ====== */
+/* ========= COUNTERS ========= */
 const counters = document.querySelectorAll('[data-count]');
 const ioCount = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -107,7 +215,7 @@ const ioCount = new IntersectionObserver(entries => {
 },{ threshold:0.6 });
 counters.forEach(el => ioCount.observe(el));
 
-/* ====== BOTÕES COM RIPPLE ====== */
+/* ========= RIPPLE ========= */
 document.querySelectorAll('.ripple').forEach(btn => {
   btn.addEventListener('click', function(e){
     const circle = document.createElement('span');
@@ -122,27 +230,7 @@ document.querySelectorAll('.ripple').forEach(btn => {
   });
 });
 
-/* ====== LOGOS LOOP CONTÍNUO (sem tranco) ====== */
-document.querySelectorAll('.scroller[data-animated]').forEach(scroller => {
-  const inner = scroller.querySelector('.scroller__inner');
-  const items = Array.from(inner.children);
-  items.forEach(item => inner.appendChild(item.cloneNode(true))); // duplica
-});
-
-/* ====== MODAL ====== */
-const openButtons = document.querySelectorAll('[data-open-modal]');
-const closeModalEls = document.querySelectorAll('[data-close-modal]');
-openButtons.forEach(b => b.addEventListener('click', () => {
-  const sel = b.getAttribute('data-open-modal');
-  const modal = document.querySelector(sel);
-  if (modal) modal.setAttribute('aria-hidden', 'false');
-}));
-closeModalEls.forEach(c => c.addEventListener('click', () => {
-  const m = c.closest('.modal'); if (m) m.setAttribute('aria-hidden', 'true');
-}));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal').forEach(m => m.setAttribute('aria-hidden','true')); });
-
-/* ====== TABS DE PRODUTOS ====== */
+/* ========= TABS PROJETOS ========= */
 const tabs = document.querySelectorAll('.tabs .tab');
 const cards = document.querySelectorAll('.products-grid .p-card');
 tabs.forEach(tab => {
@@ -150,8 +238,6 @@ tabs.forEach(tab => {
     tabs.forEach(t => t.classList.remove('is-active'));
     tab.classList.add('is-active');
     const f = tab.dataset.filter;
-    cards.forEach(c => {
-      c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
-    });
+    cards.forEach(c => { c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none'; });
   });
 });
