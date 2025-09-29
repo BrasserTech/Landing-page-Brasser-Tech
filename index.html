@@ -1,274 +1,355 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BrasserTech — Plataforma de Automação e Sistemas</title>
-  <meta name="description" content="Soluções empresariais em automação, integrações, ERP e analytics para acelerar processos de ponta a ponta." />
-  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brasser Tech — Tecnologia e Agentes de IA</title>
+  <meta name="description" content="Soluções em tecnologia, automação e agentes de IA para acelerar negócios.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/logo.svg">
 </head>
 <body>
-  <!-- Header único -->
-  <header class="bt-header" role="banner">
-    <div class="bt-container bt-nav">
-      <a class="bt-brand" href="index.html" aria-label="Página inicial BrasserTech">
-        <img src="assets/img/logo.svg" alt="" height="32" />
-        <span>BrasserTech</span>
+  <!-- Header fixo -->
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="brand" href="#">
+        <img src="assets/img/logo.svg" alt="Brasser Tech" class="brand-logo" />
+        <span class="brand-name">Brasser Tech</span>
       </a>
 
-      <nav class="bt-menu" aria-label="Menu principal">
-        <div class="bt-menu-item" data-mega="solucoes">
-          <button class="bt-menu-btn" aria-haspopup="true" aria-expanded="false">Soluções</button>
-          <div class="bt-mega" id="mega-solucoes" role="menu">
-            <div class="bt-mega-col">
-              <p class="bt-kicker">Plataforma</p>
-              <a href="#solucoes" class="bt-mega-link" role="menuitem">Automação de Processos</a>
-              <a href="#solucoes" class="bt-mega-link" role="menuitem">Integrações & Orquestração</a>
-              <a href="#solucoes" class="bt-mega-link" role="menuitem">ERP Desktop/Cloud</a>
-              <a href="#solucoes" class="bt-mega-link" role="menuitem">Analytics & Dashboards</a>
-            </div>
-            <div class="bt-mega-col">
-              <p class="bt-kicker">Casos</p>
-              <a href="#cases" class="bt-mega-tag" role="menuitem">Pedidos via WhatsApp</a>
-              <a href="#cases" class="bt-mega-tag" role="menuitem">n8n com filas</a>
-              <a href="#cases" class="bt-mega-tag" role="menuitem">ERP com licenças</a>
-              <a href="#cases" class="bt-mega-tag" role="menuitem">BI e indicadores</a>
-            </div>
-            <div class="bt-mega-col bt-mega-cta">
-              <h4>Diagnóstico gratuito</h4>
-              <p>Mapeie processos críticos e receba um roteiro em 7 dias.</p>
-              <a href="#contato" class="bt-btn bt-btn-primary">Agendar agora</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="bt-menu-item" data-mega="segmentos">
-          <button class="bt-menu-btn" aria-haspopup="true" aria-expanded="false">Segmentos</button>
-          <div class="bt-mega" id="mega-segmentos" role="menu">
-            <div class="bt-mega-col">
-              <p class="bt-kicker">Indústrias</p>
-              <a href="#segmentos" role="menuitem" class="bt-mega-link">Varejo & Food Service</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-link">Educação & Serviços</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-link">SaaS & Tecnologia</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-link">Indústria & Distribuição</a>
-            </div>
-            <div class="bt-mega-col">
-              <p class="bt-kicker">Jornadas</p>
-              <a href="#segmentos" role="menuitem" class="bt-mega-tag">Atendimento & Conversão</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-tag">Financeiro & Faturamento</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-tag">Operações & Logística</a>
-              <a href="#segmentos" role="menuitem" class="bt-mega-tag">Gestão & Compliance</a>
-            </div>
-            <div class="bt-mega-col bt-mega-cta">
-              <h4>Fale com especialista</h4>
-              <p>Conecte requisitos do seu setor à nossa plataforma.</p>
-              <a href="#contato" class="bt-btn bt-btn-outline">Solicitar contato</a>
-            </div>
-          </div>
-        </div>
-
-        <a href="#clientes">Clientes</a>
-        <a href="#insights">Insights</a>
-        <a href="#contato" class="bt-btn bt-btn-outline">Fale com a equipe</a>
+      <nav class="nav" aria-label="Primária">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu" id="btnMenu">
+          <span class="nav-toggle-bar"></span><span class="sr-only">Menu</span>
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="#principal">Principal</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contratos">Contratos</a></li>
+          <li><a href="#contato" class="btn btn-primary">Contato</a></li>
+        </ul>
       </nav>
-
-      <button class="bt-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <main>
-    <!-- Hero claro, azul + branco -->
-    <section class="bt-hero">
-      <div class="bt-container bt-hero-grid">
-        <div class="bt-hero-copy">
-          <h1>Automação e Sistemas para escalar a sua operação</h1>
-          <p class="bt-lead">Plataforma BrasserTech: integrações, bots, ERP e analytics com governança e observabilidade. Ganhe velocidade, previsibilidade e reduza custos.</p>
-          <div class="bt-actions">
-            <a href="#contato" class="bt-btn bt-btn-primary">Agendar diagnóstico</a>
-            <a href="#solucoes" class="bt-btn">Ver soluções</a>
-          </div>
-          <ul class="bt-hero-kpis">
-            <li><strong>+40%</strong><span>produtividade</span></li>
-            <li><strong>-35%</strong><span>custos operacionais</span></li>
-            <li><strong>99,9%</strong><span>uptime integrações</span></li>
-          </ul>
+  <!-- HERO -->
+  <main id="principal" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text" data-reveal>
+        <h1 class="type-in">Agentes de IA e automação para organizações de alto desempenho</h1>
+        <p>Integramos modelos de linguagem, orquestração e dados para criar soluções seguras, escaláveis e mensuráveis.</p>
+        <div class="hero-cta">
+          <a href="#contato" class="btn btn-primary ripple">Solicitar diagnóstico</a>
+          <a href="#servicos" class="btn btn-ghost ripple">Conhecer soluções</a>
         </div>
-        <div class="bt-hero-art" aria-hidden="true"></div>
+        <ul class="hero-badges">
+          <li>• Arquiteturas seguras</li>
+          <li>• KPIs de valor</li>
+          <li>• Suporte humano-no-loop</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- Logos -->
-    <section id="clientes" class="bt-logos">
-      <div class="bt-container">
-        <p>Empresas que confiam em soluções BrasserTech</p>
-        <div class="bt-logos-grid">
-          <div class="bt-logo-box">Cliente A</div>
-          <div class="bt-logo-box">Cliente B</div>
-          <div class="bt-logo-box">Cliente C</div>
-          <div class="bt-logo-box">Cliente D</div>
+      <div class="hero-art parallax" aria-hidden="true">
+        <div class="glow glow-a"></div>
+        <div class="glow glow-b"></div>
+        <!-- 8 blocos com a mesma imagem (imgprodex) -->
+        <div class="mesh">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
         </div>
       </div>
-    </section>
-
-    <!-- Soluções -->
-    <section id="solucoes" class="bt-section">
-      <div class="bt-container">
-        <header class="bt-section-head">
-          <h2>Portfólio de soluções</h2>
-          <p>Componentes modulares para necessidades críticas.</p>
-        </header>
-        <div class="bt-cards">
-          <article class="bt-card">
-            <h3>Automação de Processos</h3>
-            <p>Mapeamento de fluxos, otimização e operação contínua.</p>
-            <ul>
-              <li>Orquestração com n8n</li>
-              <li>Filas, DLQ e alertas</li>
-              <li>SLAs e SLOs definidos</li>
-            </ul>
-          </article>
-          <article class="bt-card">
-            <h3>Integrações</h3>
-            <p>APIs, webhooks e conectores customizados.</p>
-            <ul>
-              <li>WhatsApp Cloud API</li>
-              <li>Pagamentos (Pix, cartões)</li>
-              <li>ERP/CRM & gateways</li>
-            </ul>
-          </article>
-          <article class="bt-card">
-            <h3>ERP Desktop/Cloud</h3>
-            <p>Módulos financeiros, contratos, relatórios e licenças.</p>
-            <ul>
-              <li>Electron + React</li>
-              <li>PostgreSQL</li>
-              <li>Atualizações automáticas</li>
-            </ul>
-          </article>
-          <article class="bt-card">
-            <h3>Analytics & BI</h3>
-            <p>Painéis operacionais, indicadores e governança de dados.</p>
-            <ul>
-              <li>KPIs por jornada</li>
-              <li>Observabilidade</li>
-              <li>Suporte à decisão</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Segmentos -->
-    <section id="segmentos" class="bt-section bt-alt">
-      <div class="bt-container">
-        <header class="bt-section-head">
-          <h2>Segmentos atendidos</h2>
-          <p>Adapte a plataforma às demandas do seu setor.</p>
-        </header>
-        <div class="bt-grid-4">
-          <div class="bt-panel"><h4>Varejo & Food Service</h4><p>Pedidos omnichannel e reconciliação.</p></div>
-          <div class="bt-panel"><h4>Educação & Serviços</h4><p>Matrículas, contratos e comunicação.</p></div>
-          <div class="bt-panel"><h4>SaaS & Tecnologia</h4><p>Provisionamento, billing e suporte.</p></div>
-          <div class="bt-panel"><h4>Indústria & Distribuição</h4><p>Integrações, logística e faturamento.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Insights -->
-    <section id="insights" class="bt-section">
-      <div class="bt-container">
-        <header class="bt-section-head">
-          <h2>Insights</h2>
-          <p>Conteúdos para orientar decisões de tecnologia.</p>
-        </header>
-        <div class="bt-posts">
-          <article class="bt-post"><h3>Filas e retries no n8n</h3><p>Boas práticas para resiliência.</p><a href="#" class="bt-link">Ler artigo</a></article>
-          <article class="bt-post"><h3>Webhooks e idempotência</h3><p>Estratégias para integrações robustas.</p><a href="#" class="bt-link">Ler artigo</a></article>
-          <article class="bt-post"><h3>Licenças em apps Electron</h3><p>Distribuição e manutenção centralizada.</p><a href="#" class="bt-link">Ler artigo</a></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="bt-cta">
-      <div class="bt-container">
-        <h3>Pronto para acelerar com a BrasserTech?</h3>
-        <p>Solicite um diagnóstico e receba um roteiro de implantação.</p>
-        <a href="#contato" class="bt-btn bt-btn-primary">Falar com especialista</a>
-      </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="bt-section">
-      <div class="bt-container bt-contact">
-        <div>
-          <h2>Fale com a equipe</h2>
-          <p>Atendimento de segunda a sexta, 9h–18h (BRT).</p>
-          <div class="bt-card bt-contact-box">
-            <ul>
-              <li>E-mail: contato@brassertech.com</li>
-              <li>WhatsApp: +55 (00) 90000-0000</li>
-              <li>Endereço: Brasil</li>
-            </ul>
-          </div>
-        </div>
-        <form class="bt-form" action="https://formspree.io/f/mayplqyl" method="POST">
-          <label>Nome
-            <input required type="text" name="nome" placeholder="Seu nome" />
-          </label>
-          <label>E-mail
-            <input required type="email" name="_replyto" placeholder="voce@empresa.com" />
-          </label>
-          <label>Mensagem
-            <textarea required name="mensagem" rows="4" placeholder="Como podemos ajudar?"></textarea>
-          </label>
-          <input type="hidden" name="_subject" value="Contato — Site BrasserTech" />
-          <button type="submit" class="bt-btn bt-btn-primary bt-btn-block">Enviar</button>
-          <small>Ao enviar, você concorda com nossa política de privacidade.</small>
-        </form>
-      </div>
-    </section>
+    </div>
+    <div class="stripe"></div>
   </main>
 
-  <footer class="bt-footer">
-    <div class="bt-container bt-footer-grid">
-      <div>
-        <a class="bt-brand" href="index.html">
-          <img src="assets/img/logo.svg" alt="" height="28" />
-          <span>BrasserTech</span>
-        </a>
-        <p>Plataforma de automação e sistemas para operações que precisam escalar.</p>
+  <!-- LOGOS full-bleed: loop contínuo sem tranco -->
+  <section class="logos-bar full-bleed" aria-label="Tecnologias e parceiros">
+    <div class="scroller" data-animated>
+      <div class="scroller__inner">
+        <img src="assets/img/logos/logo-01.svg" alt="Logo 1">
+        <img src="assets/img/logos/logo-02.svg" alt="Logo 2">
+        <img src="assets/img/logos/logo-03.svg" alt="Logo 3">
+        <img src="assets/img/logos/logo-04.svg" alt="Logo 4">
+        <img src="assets/img/logos/logo-05.svg" alt="Logo 5">
+        <img src="assets/img/logos/logo-06.svg" alt="Logo 6">
+        <img src="assets/img/logos/logo-07.svg" alt="Logo 7">
+        <img src="assets/img/logos/logo-08.svg" alt="Logo 8">
       </div>
-      <div>
-        <p class="bt-kicker">Empresa</p>
-        <ul>
-          <li><a href="pages/sobre.html">Sobre</a></li>
-          <li><a href="#clientes">Clientes</a></li>
-          <li><a href="#insights">Insights</a></li>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section">
+    <div class="container two-cols">
+      <div class="col" data-reveal>
+        <h2>Quem somos</h2>
+        <p>A Brasser Tech projeta e implementa plataformas de automação com agentes de IA, integrando sistemas legados, bancos de dados e fluxos operacionais. Atuamos do diagnóstico à produção com governança, testes e observabilidade.</p>
+        <div class="stats">
+          <div><strong data-count="120">0</strong><span>Automações entregues</span></div>
+          <div><strong data-count="99.9">0</strong><span>Uptime monitorado (%)</span></div>
+          <div><strong data-count="4">0</strong><span>Ganho médio de produtividade (x)</span></div>
+        </div>
+      </div>
+      <div class="col card-list">
+        <article class="card tilt" data-reveal>
+          <h3>Princípios</h3>
+          <p>Segurança por padrão, privacidade, explicabilidade, avaliação contínua e foco em valor de negócio.</p>
+        </article>
+        <article class="card tilt" data-reveal>
+          <h3>Método</h3>
+          <p>Descoberta → Desenho → MVP guiado por métricas → Escala com SRE e A/B de prompts e ferramentas.</p>
+        </article>
+        <article class="card tilt" data-reveal>
+          <h3>Time</h3>
+          <p>Engenheiros de dados, ML e produto, com experiência em pipelines, agentes e integrações corporativas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="section alt">
+    <div class="container">
+      <h2 class="center">Soluções</h2>
+      <p class="center maxw">Pacotes modulares para acelerar sua adoção de IA com governança.</p>
+
+      <div class="grid-3">
+        <article class="svc tilt" data-reveal>
+          <div class="svc-ico">🤖</div>
+          <h3>Agentes de IA</h3>
+          <p>Assistentes com ferramentas (tool-use), memória e roteamento, integrados a ERP/CRM e APIs.</p>
+          <ul class="bullets">
+            <li>RAG com fontes privadas</li>
+            <li>Orquestração e guardrails</li>
+            <li>Tracing e métricas</li>
+          </ul>
+        </article>
+
+        <article class="svc tilt" data-reveal>
+          <div class="svc-ico">⚙️</div>
+          <h3>Automação de Processos</h3>
+          <p>Workflows n8n/Workers, filas e webhooks para atendimento, vendas, backoffice e compliance.</p>
+          <ul class="bullets">
+            <li>SLAs e monitoramento</li>
+            <li>Human-in-the-loop</li>
+            <li>Custos previsíveis</li>
+          </ul>
+        </article>
+
+        <article class="svc tilt" data-reveal>
+          <div class="svc-ico">📊</div>
+          <h3>Dados e Observabilidade</h3>
+          <p>Telemetria, painéis e avaliação de qualidade (offline/online) com KPIs de produto.</p>
+          <ul class="bullets">
+            <li>Data Lake/ETL</li>
+            <li>A/B de prompts</li>
+            <li>Segurança e RBAC</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS (nova) — usa a “imagem 2” -->
+  <section id="produtos" class="section products full-bleed-bg">
+    <div class="products-bg parallax" style="--bg:url('assets/img/produtos/imagem-2.jpg')"></div>
+
+    <div class="container">
+      <div class="products-header" data-reveal>
+        <h2>Produtos Brasser</h2>
+        <p class="maxw">Conjunto de módulos prontos para acelerar implementações com agentes de IA, conectores e observabilidade.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" data-filter="all" aria-selected="true">Todos</button>
+          <button class="tab" data-filter="agentes">Agentes</button>
+          <button class="tab" data-filter="automacao">Automação</button>
+          <button class="tab" data-filter="dados">Dados</button>
+        </div>
+      </div>
+
+      <div class="grid-3 products-grid">
+        <!-- Todos usam a imagem 2 como base visual. Troque depois por imagens específicas. -->
+        <article class="p-card tilt" data-cat="agentes" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Agent Hub</h3>
+          <p>Orquestração de agentes com ferramentas, memória e RBAC.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+
+        <article class="p-card tilt" data-cat="automacao" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Flow Engine</h3>
+          <p>Workflows assíncronos, filas e webhooks com SLAs.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+
+        <article class="p-card tilt" data-cat="dados" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Telemetry Kit</h3>
+          <p>Tracing, feedbacks e painéis para LLMs e agentes.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+
+        <article class="p-card tilt" data-cat="agentes" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Guardrails</h3>
+          <p>Políticas de segurança, filtros, validação e sandboxes.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+
+        <article class="p-card tilt" data-cat="automacao" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Integrations</h3>
+          <p>Conectores para ERP/CRM, e-mail, WhatsApp, bancos de dados.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+
+        <article class="p-card tilt" data-cat="dados" style="--img:url('assets/img/produtos/imagem-2.jpg')" data-reveal>
+          <h3>Eval Studio</h3>
+          <p>Avaliações offline/online, datasets e A/B de prompts.</p>
+          <a class="btn btn-ghost ripple" href="#">Detalhes</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="section">
+    <div class="container">
+      <h2 class="center">Projetos e Cases</h2>
+      <p class="center maxw">Algumas das soluções desenvolvidas pela Brasser Tech em IA e automação.</p>
+
+      <div class="grid-3" style="margin-top:40px">
+        <article class="card project tilt" data-reveal>
+          <h3>Agente de Suporte Omnichannel</h3>
+          <p>Agente de IA integrado ao WhatsApp e e-mail, redução de 60% no TMA e handoff humano.</p>
+          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
+        </article>
+        <article class="card project tilt" data-reveal>
+          <h3>Automação Financeira</h3>
+          <p>Pipeline de conciliação automática com relatórios em tempo real e redução de erros manuais.</p>
+          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
+        </article>
+        <article class="card project tilt" data-reveal>
+          <h3>RAG Jurídico</h3>
+          <p>Busca em documentos internos com citações e auditoria, acelerando pareceres.</p>
+          <a href="#" class="btn btn-ghost ripple">Ver mais</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRATOS -->
+  <section id="contratos" class="section alt">
+    <div class="container">
+      <h2 class="center">Modelos de contratação</h2>
+      <div class="grid-3">
+        <article class="plan tilt" data-reveal>
+          <h3>Start</h3>
+          <p class="price">R$ —</p>
+          <ul>
+            <li>Diagnóstico e roadmap</li>
+            <li>MVP em 4 semanas</li>
+            <li>Treinamento</li>
+          </ul>
+          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Começar</button>
+        </article>
+        <article class="plan tilt" data-reveal>
+          <h3>Scale</h3>
+          <p class="price">R$ —</p>
+          <ul>
+            <li>Agentes em produção</li>
+            <li>Observabilidade</li>
+            <li>Suporte estendido</li>
+          </ul>
+          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Solicitar proposta</button>
+        </article>
+        <article class="plan tilt" data-reveal>
+          <h3>Enterprise</h3>
+          <p class="price">Sob medida</p>
+          <ul>
+            <li>Segurança avançada</li>
+            <li>Integrações críticas</li>
+            <li>SLOs e governança</li>
+          </ul>
+          <button class="btn btn-primary ripple" data-open-modal="#modalLead">Falar com vendas</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section">
+    <div class="container two-cols">
+      <div class="col" data-reveal>
+        <h2>Vamos conversar</h2>
+        <p>Descreva seus objetivos e receberá um diagnóstico rápido de viabilidade.</p>
+        <ul class="contact-list">
+          <li>contato@brassertech.com.br</li>
+          <li>+55 (00) 0000-0000</li>
+          <li>@brassertech</li>
         </ul>
       </div>
+      <form class="col form" data-reveal onsubmit="return false;">
+        <label>Nome <input type="text" required></label>
+        <label>E-mail <input type="email" required></label>
+        <label>Mensagem <textarea rows="4" required></textarea></label>
+        <button class="btn btn-primary ripple" data-open-modal="#modalLead">Enviar</button>
+        <small>Ao enviar, você concorda com nossos <a href="pages/termos.html">Termos</a> e <a href="pages/privacidade.html">Privacidade</a>.</small>
+      </form>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer-grid">
       <div>
-        <p class="bt-kicker">Legal</p>
+        <a class="brand brand-foot" href="#">
+          <img src="assets/img/logo.svg" class="brand-logo" alt="Brasser Tech" />
+          <span class="brand-name">Brasser Tech</span>
+        </a>
+        <p>Tecnologia, automação e agentes de IA.</p>
+      </div>
+      <nav>
+        <h4>Empresa</h4>
         <ul>
-          <li><a href="pages/termos.html">Termos de uso</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contratos">Contratos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <nav>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="pages/termos.html">Termos</a></li>
           <li><a href="pages/privacidade.html">Privacidade</a></li>
         </ul>
-      </div>
-      <div>
-        <p class="bt-kicker">Contato</p>
-        <ul>
-          <li><a href="#contato">Fale com a equipe</a></li>
-          <li><a href="#contato">Seja parceiro</a></li>
-        </ul>
-      </div>
+      </nav>
     </div>
-    <div class="bt-copy">
-      <small>© <span id="btYear"></span> BrasserTech. Todos os direitos reservados.</small>
+    <div class="foot-copy">
+      © <span id="year"></span> Brasser Tech. Todos os direitos reservados.
     </div>
   </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modalLead" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fechar" data-close-modal>×</button>
+      <h3>Fale com a Brasser Tech</h3>
+      <p>Informe um e-mail e retornaremos com uma proposta personalizada.</p>
+      <form class="lead" onsubmit="return false;">
+        <input type="email" placeholder="seu@email.com" required>
+        <button class="btn btn-primary ripple">Quero ser contatado</button>
+      </form>
+      <small>Usaremos seus dados apenas para contato comercial.</small>
+    </div>
+  </div>
+
+  <button class="to-top" aria-label="Voltar ao topo" data-to-top>↑</button>
 
   <script src="assets/js/main.js"></script>
 </body>
